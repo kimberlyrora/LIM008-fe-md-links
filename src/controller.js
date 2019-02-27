@@ -43,10 +43,13 @@ export const isDirectoryAsync = (route, cb) => {
 });
 };
 /**
- * 
+ * Funcion Recursiva
  * @param {Ruta a leer} route
- * @return  boolean: false si no es directorio(Regresa a función isDirectoryAsync)
+ * @return  array de rutas de archivos .md
  */
 export const readDirectorySync = (route) => {
-fs.readdir
+const file = fs.readdirSync(route);
+return file;
+// files.forEach((element) => {
+//     let currentFile =  paths.join(route,element)
 };

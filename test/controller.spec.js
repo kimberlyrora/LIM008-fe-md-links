@@ -56,9 +56,10 @@ describe('readDirectorySync', () => {
     it('Debería ser una función', () => {
         expect(typeof readDirectorySync).toBe('function');
     });
-    // it('Debería devolver true si la ruta es un directorio', () => {
-    //     expect(isDirectory('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links')).toBe(true);
-    // });
+    it('Debería devolver un array con las rutas absolutas de los archivos .md que se encuentran en el directorio', () => {
+       console.log(readDirectorySync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links'));
+        // expect(readDirectorySync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links')).toBe();
+    });
     // it('Debería devolver false si la ruta no es un directorio', () => {
     //     expect(isDirectory('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src\\controller.js')).toBe(false);
     // });
