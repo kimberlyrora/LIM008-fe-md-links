@@ -20,11 +20,33 @@ export const convertToAbsolute = (route) => {
     return routeAbsolute;
 }
 /**
+ * Función isDirectory Sincrona
  * @param {ruta a verificar si es directorio} route
  * @returns boolean: true si es directorio
  *                   false si no es directorio
  */
-export const isDirectory = (route) => {
+export const isDirectorySync = (route) => {
     const routeDirectory = fs.statSync(route).isDirectory();
     return routeDirectory;
-}
+};
+/**
+ * Función isDirectory Asincrona
+ * @param {ruta a verificar si es directorio} route
+ * @param {callback que indica que se termino de realizar el proceso} cb
+ * @returns boolean: true si es directorio
+ *                   false si no es directorio
+ */
+export const isDirectoryAsync = (route, cb) => {
+    fs.stat(route, (err, stats) => {
+        const result = stats.isDirectory();
+    cb(null,result);
+});
+};
+/**
+ * 
+ * @param {Ruta a leer} route
+ * @return  boolean: false si no es directorio(Regresa a función isDirectoryAsync)
+ */
+export const readDirectorySync = (route) => {
+fs.readdir
+};

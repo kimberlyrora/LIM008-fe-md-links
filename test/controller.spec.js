@@ -1,4 +1,4 @@
-import { isAbsolute, convertToAbsolute, isDirectory } from '../src/controller.js';
+import { isAbsolute, convertToAbsolute, isDirectorySync, isDirectoryAsync, readDirectorySync } from '../src/controller.js';
 describe('isAbsolute', () => {
     it('Debería ser una función', () => {
         expect(typeof isAbsolute).toBe('function');
@@ -19,14 +19,47 @@ describe('convertToAbsolute', () => {
         expect(convertToAbsolute('.\\recursión')).toBe('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\recursión');
     });
 });
-describe('isDirectory', () => {
+// Test para isDirectorySync
+describe('isDirectorySync', () => {
     it('Debería ser una función', () => {
-        expect(typeof isDirectory).toBe('function');
+        expect(typeof isDirectorySync).toBe('function');
     });
     it('Debería devolver true si la ruta es un directorio', () => {
-        expect(isDirectory('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links')).toBe(true);
+        expect(isDirectorySync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links')).toBe(true);
     });
     it('Debería devolver false si la ruta no es un directorio', () => {
-        expect(isDirectory('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src\\controller.js')).toBe(false);
+        expect(isDirectorySync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src\\controller.js')).toBe(false);
     });
+});
+// Test para isDirectoryAsync
+describe('isDirectoryAsync', () => {
+    it('Debería ser una función', () => {
+        expect(typeof isDirectoryAsync).toBe('function');
+    });
+    it('Debería devolver true si la ruta es un directorio', (done) => {
+        const cb = (undefined, result) => {
+        expect(result).toBe(true);
+        done();
+        };
+        isDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src', cb)
+    });
+    it('Debería devolver false si la ruta es un directorio', (done) => {
+        const cb = (undefined, result) => {
+        expect(result).toBe(true);
+        done();
+        };
+        isDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src', cb)
+    });
+});
+// Test para readDirectorySync
+describe('readDirectorySync', () => {
+    it('Debería ser una función', () => {
+        expect(typeof readDirectorySync).toBe('function');
+    });
+    // it('Debería devolver true si la ruta es un directorio', () => {
+    //     expect(isDirectory('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links')).toBe(true);
+    // });
+    // it('Debería devolver false si la ruta no es un directorio', () => {
+    //     expect(isDirectory('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src\\controller.js')).toBe(false);
+    // });
 });
