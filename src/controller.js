@@ -42,6 +42,10 @@ export const isDirectoryAsync = (route, cb) => {
     cb(null,result);
 });
 };
+export const isFileSync = (route) =>{
+const routeFile  = fs.statSync(route).isFile();
+return routeFile;
+}
 /**
  * Funcion Recursiva
  * @param {Ruta a leer} route
@@ -57,11 +61,18 @@ arrayReadDir.push(afterFile);
 } else if (fs.statSync(afterFile).isDirectory() === true){
     readDirectorySync(afterFile);
 } 
-console.log(arrayReadDir);
 })
 return arrayReadDir;
 };
-
-// export const readDirectoryAsync = (route, callback) => {
-//     const hadReadDirAsync
-// }
+/**
+ * 
+ * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
+ * @param {array con archivos markdown} callback 
+ * @returns callback
+ */
+export const readDirectoryAsync = (route, callback) => {
+  fs.stat(route, (err, files) => {
+      const result = files.readdir();
+      console.log(result);
+      callback(null, result);
+  })}
