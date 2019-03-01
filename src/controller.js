@@ -51,15 +51,15 @@ return routeFile;
  * @param {Ruta a leer} route
  * @return  array de rutas de archivos .md
  */
-let arrayReadDir = [];
 export const readDirectorySync = (route) => {
+let arrayReadDir = [];
 const hadReadDir = fs.readdirSync(route);
 hadReadDir.forEach((complement) => {
     let afterFile =  path.join(route, complement);
-if(fs.statSync(afterFile).isFile() && path.extname(afterFile) === '.md'){
+if( isFileSync() && path.extname(afterFile) === '.md'){
 arrayReadDir.push(afterFile);
-} else if (isDirectorySync(afterFile)){
-    readDirectorySync(afterFile);
+} else if (isDirectorySync()){
+    arrayReadDir = arrayReadDir.concat(readDirectorySync(afterFile));
 } 
 })
 return arrayReadDir;
@@ -81,6 +81,18 @@ return arrayReadDir;
  * @param {Array con rutas de archivos .md} arr
  * @returns  
  */
-export const readArrayFiles = (arr) => {
-
-};
+export const readDirectoryAsync = (route, callback) => {
+  fs.stat(route, (err, files) => {
+      const result = files.readdir();
+      console.log(result);
+      callback(null, result);
+  })}
+  /**
+   * 
+   * @param {Ruta a leer archivo} route
+   * @returns string: contenido de la ruta
+   */
+  export const readFileSync = (route) => {
+      const routeFile = fs.readFileSync(route, 'utf8');
+      return routeFile;
+  }
