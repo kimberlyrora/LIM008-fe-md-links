@@ -1,4 +1,4 @@
-import { isAbsolute, convertToAbsolute, isDirectorySync, isDirectoryAsync, readDirectorySync, isFileSync, readDirectoryAsync } from '../src/controller.js';
+import { isAbsolute, convertToAbsolute, isDirectorySync, isDirectoryAsync, readDirectorySync, isFileSync, readDirectoryAsync, readArrayFiles } from '../src/controller.js';
 describe('isAbsolute', () => {
     it('Debería ser una función', () => {
         expect(typeof isAbsolute).toBe('function');
@@ -76,15 +76,24 @@ describe('readDirectorySync', () => {
     // });
 });
 // Test para readDirectoryAsync
-describe('readDirectoryAsync', () => {
+// describe('readDirectoryAsync', () => {
+//     it('Debería ser una función', () => {
+//         expect(typeof readDirectoryAsync).toBe('function');
+//     });
+//     it('Debería devolver un array con las rutas absolutas de los archivos .md que se encuentran en el directorio', (done) => {
+//         const callback = (undefined, result) => {
+//             console.log(result);
+//             done();
+//         };
+//         readDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest',callback)
+//     });
+// });
+// Test para recorrear array de rutas de archivos .md
+describe('readArrayFiles', () => {
     it('Debería ser una función', () => {
-        expect(typeof readDirectoryAsync).toBe('function');
+        expect(typeof readArrayFiles).toBe('function');
     });
-    it('Debería devolver un array con las rutas absolutas de los archivos .md que se encuentran en el directorio', (done) => {
-        const callback = (undefined, result) => {
-            console.log(result);
-            done();
-        };
-        readDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest',callback)
-    });
+    it('Debería', () => {
+        expect(readArrayFiles()).toBe();
+    })
 });

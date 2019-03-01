@@ -56,23 +56,31 @@ export const readDirectorySync = (route) => {
 const hadReadDir = fs.readdirSync(route);
 hadReadDir.forEach((complement) => {
     let afterFile =  path.join(route, complement);
-if(fs.statSync(afterFile).isFile() === true && path.extname(afterFile) === '.md'){
+if(fs.statSync(afterFile).isFile() && path.extname(afterFile) === '.md'){
 arrayReadDir.push(afterFile);
-} else if (fs.statSync(afterFile).isDirectory() === true){
+} else if (isDirectorySync(afterFile)){
     readDirectorySync(afterFile);
 } 
 })
 return arrayReadDir;
 };
+// /**
+//  * Función asincrona recursiva readDirectory
+//  * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
+//  * @param {array con archivos markdown} callback 
+//  * @returns callback
+//  */
+// export const readDirectoryAsync = (route, callback) => {
+//   fs.stat(route, (err, files) => {
+//       const result = files.readdir();
+//       console.log(result);
+//       callback(null, result);
+//   })}
 /**
  * 
- * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
- * @param {array con archivos markdown} callback 
- * @returns callback
+ * @param {Array con rutas de archivos .md} arr
+ * @returns  
  */
-export const readDirectoryAsync = (route, callback) => {
-  fs.stat(route, (err, files) => {
-      const result = files.readdir();
-      console.log(result);
-      callback(null, result);
-  })}
+export const readArrayFiles = (arr) => {
+
+};
