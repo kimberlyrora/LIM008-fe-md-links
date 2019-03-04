@@ -1,2 +1,1 @@
-HOLA Como estas?
-[Markdown](https://es.wikipedia.org/wiki/Markdown)
+HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)

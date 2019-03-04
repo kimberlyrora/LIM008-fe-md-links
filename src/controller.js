@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs');
+const marked =  require('marked');
+const md =  require('markdown-it')();
 
 /**
  * @param {ruta a verificar} route
@@ -56,14 +58,15 @@ let arrayReadDir = [];
 const hadReadDir = fs.readdirSync(route);
 hadReadDir.forEach((complement) => {
     let afterFile =  path.join(route, complement);
-if( isFileSync() && path.extname(afterFile) === '.md'){
+if( isFileSync(afterFile) && path.extname(afterFile) === '.md'){
 arrayReadDir.push(afterFile);
-} else if (isDirectorySync()){
+} else if (isDirectorySync(afterFile)){
     arrayReadDir = arrayReadDir.concat(readDirectorySync(afterFile));
 } 
 })
 return arrayReadDir;
 };
+
 /**
  * 
  * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
@@ -82,6 +85,30 @@ export const readDirectoryAsync = (route, callback) => {
    * @returns string: contenido de la ruta
    */
   export const readFileSync = (route) => {
-      const routeFile = fs.readFileSync(route, 'utf8');
+      const routeFile = fs.readFileSync(route);
       return routeFile;
   }
+  /**
+   * 
+   * @param {contenido de archivo .md} content 
+   * @returns 
+   */
+  export const markedLinks = (content) => {
+    const markdown = md.render(content);
+    return markdown;
+    
+  }
+  /**
+   * 
+   * @param {estructura Html} markCont
+   * @returns array de links 
+   */
+  let rr= [];
+  const hey = document.querySelectorAll('a').forEach((arc) => {
+arc.getAttribute('a');
+console.log()
+  })
+  export const getAttr = (hey) => {
+
+    return hey;
+  } 
