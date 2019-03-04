@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-
+const marked = require('marked');
 /**
  * @param {ruta a verificar} route
  * @returns boolean: true si es absoluta
@@ -96,3 +96,8 @@ export const readDirectoryAsync = (route, callback) => {
       const routeFile = fs.readFileSync(route, 'utf8');
       return routeFile;
   }
+ 
+export const linksMarks = (contentMd) =>{
+    const contentMarked = marked(contentMd);
+    return contentMarked;
+}
