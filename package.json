@@ -22,5 +22,9 @@
     "eslint-plugin-jest": "^22.1.2",
     "jest": "^24.1.0",
     "regenerator-runtime": "^0.13.1"
+  },
+  "dependencies": {
+    "markdown-it": "^8.4.2",
+    "marked": "^0.6.1"
   }
 }

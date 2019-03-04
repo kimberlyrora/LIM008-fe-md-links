@@ -1,6 +1,13 @@
+import { mdLinks } from './mdLinks';
+
 const path = require('path');
 const fs = require('fs');
-const marked = require('marked');
+const marked =  require('marked');
+const md =  require('markdown-it')();
+const  linkify = require('linkyfy-it')();
+linkify
+        .add('mailto:', null);
+
 /**
  * @param {ruta a verificar} route
  * @returns boolean: true si es absoluta
@@ -56,9 +63,9 @@ let arrayReadDir = [];
 const hadReadDir = fs.readdirSync(route);
 hadReadDir.forEach((complement) => {
     let afterFile =  path.join(route, complement);
-if( isFileSync() && path.extname(afterFile) === '.md'){
+if( isFileSync(afterFile) && path.extname(afterFile) === '.md'){
 arrayReadDir.push(afterFile);
-} else if (isDirectorySync()){
+} else if (isDirectorySync(afterFile)){
     arrayReadDir = arrayReadDir.concat(readDirectorySync(afterFile));
 } 
 })
@@ -93,11 +100,28 @@ export const readDirectoryAsync = (route, callback) => {
    * @returns string: contenido de la ruta
    */
   export const readFileSync = (route) => {
-      const routeFile = fs.readFileSync(route, 'utf8');
+      const routeFile = fs.readFileSync(route);
       return routeFile;
   }
+  /**
+   * 
+   * @param {contenido de archivo .md} content 
+   * @returns 
+   */
+  export const markedLinks = (content) => {
+    const markdown = md.render(content);
+    return markdown;
+    
+  }
+  /**
+   * 
+   * @param {estructura Html} markCont
+   * @returns array de links 
+   */
  
-export const linksMarks = (contentMd) =>{
-    const contentMarked = marked(contentMd);
-    return contentMarked;
-}
+  export const getAttr = (arr) => {
+    //   let inlArray = [];
+      const link = md.render(arr);
+      const matchs = linkify.match(link);
+        return matchs
+    }
