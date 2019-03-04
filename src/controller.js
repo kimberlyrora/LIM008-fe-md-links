@@ -66,12 +66,22 @@ arrayReadDir.push(afterFile);
 })
 return arrayReadDir;
 };
-
+// /**
+//  * Función asincrona recursiva readDirectory
+//  * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
+//  * @param {array con archivos markdown} callback 
+//  * @returns callback
+//  */
+// export const readDirectoryAsync = (route, callback) => {
+//   fs.stat(route, (err, files) => {
+//       const result = files.readdir();
+//       console.log(result);
+//       callback(null, result);
+//   })}
 /**
  * 
- * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
- * @param {array con archivos markdown} callback 
- * @returns callback
+ * @param {Array con rutas de archivos .md} arr
+ * @returns  
  */
 export const readDirectoryAsync = (route, callback) => {
   fs.stat(route, (err, files) => {
