@@ -1,12 +1,8 @@
-import { mdLinks } from './mdLinks';
-
 const path = require('path');
 const fs = require('fs');
-const marked =  require('marked');
-const md =  require('markdown-it')();
-const  linkify = require('linkyfy-it')();
-linkify
-        .add('mailto:', null);
+const myMarked =  require('marked');
+const renderer = new myMarked.Renderer();
+
 
 /**
  * @param {ruta a verificar} route
@@ -118,10 +114,15 @@ export const readDirectoryAsync = (route, callback) => {
    * @param {estructura Html} markCont
    * @returns array de links 
    */
- 
-  export const getAttr = (arr) => {
-    //   let inlArray = [];
-      const link = md.render(arr);
-      const matchs = linkify.match(link);
-        return matchs
-    }
+  export const getLinks = (route) => {
+      let arrayLink = [];
+      route.forEach((file) => {
+          const readMd = readFileSync(file).toString();
+          renderer.link = (href,title,text) => {
+              arrayLink.push({href,text,file:file});
+          };
+         myMarked(readMd, {renderer});    
+        });
+        return arrayLink;
+    };
+console.log(getLinks(readDirectorySync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest')));
