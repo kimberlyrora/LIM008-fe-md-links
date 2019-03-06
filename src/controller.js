@@ -1,12 +1,8 @@
-import { mdLinks } from './mdLinks';
-
 const path = require('path');
 const fs = require('fs');
-const marked =  require('marked');
-const md =  require('markdown-it')();
-const  linkify = require('linkyfy-it')();
-linkify
-        .add('mailto:', null);
+const myMarked =  require('marked');
+const renderer = new myMarked.Renderer();
+const fetch = require('node-fetch');
 
 /**
  * @param {ruta a verificar} route
@@ -91,7 +87,7 @@ return arrayReadDir;
 export const readDirectoryAsync = (route, callback) => {
   fs.stat(route, (err, files) => {
       const result = files.readdir();
-      console.log(result);
+    //   console.log(result);
       callback(null, result);
   })}
   /**
@@ -118,10 +114,85 @@ export const readDirectoryAsync = (route, callback) => {
    * @param {estructura Html} markCont
    * @returns array de links 
    */
- 
-  export const getAttr = (arr) => {
-    //   let inlArray = [];
-      const link = md.render(arr);
-      const matchs = linkify.match(link);
-        return matchs
+  export const getLinks = (route) => {
+      let arrayLink = [];
+      route.forEach((file) => {
+          const readMd = readFileSync(file).toString();
+          renderer.link = (href,title,text) => {
+              arrayLink.push({href,text: text.substring(0,50),file:file});
+          };
+         myMarked(readMd, {renderer});    
+        });
+        return arrayLink;
+    };
+/**
+ * 
+ * @param {link a validar} href
+ * @returns string ok or fail 
+//  */
+// async function returnTrue(data) {
+//     let promise = new Promise((resolve,reject) =>{
+//         resolve(fetch(data).then(res => res.status))});
+//         let result= await promise;
+//         console.log(result);
+//     };
+//     returnTrue('https://es.wikipedia.org/wiki/Markdown');
+
+//    export  async function returnTrue() {
+  
+//         // create a new promise inside of the async function
+//         let promise = new Promise((resolve, reject) => {
+//           setTimeout(() => resolve(true), 1000) // resolve
+//         });
+        
+//         // wait for the promise to resolve
+//         let result = await promise;
+         
+//         // console log the result (true)
+//         console.log(result);
+//     };
+// console.log(returnTrue());
+// function hello(link) {
+//     return new Promise(resolve => {
+//         resolve(fetch(link.ok));
+//     });
+//   }
+  
+//   async function validLinks() {
+//     var result = await hello();
+//     console.log(result);
+//     // expected output: 'resolved'
+//   }
+  
+//   validLinks();
+
+/*   function resolveAfter2Seconds(link) {
+    return new Promise(resolve => {
+        resolve(fetch(link));
+    });
+  }
+  
+  
+  async function validLinks(x) {
+    const a = await resolveAfter2Seconds(x);
+    return a;
+  }
+  
+  validLinks('https://es.wikipedia.org/wiki/Markdown').then(v => v.ok);
+ */
+  /* async function returnTrue(data) {
+    let promise = new Promise((resolve,reject) =>{
+        resolve(fetch(data))});
+        let result= await promise;
+        console.log(result.status);
+    }; */
+    //console.log(returnTrue('https://es.wikipedia.org/wiki/Markdown'));
+export const validLinks = (link) => {
+      fetch(link)
+        .then((response)=>{
+            console.log(response.status);
+            console.log(response.statusText);
+            
+        });
     }
+console.log(validLinks('https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asin'));

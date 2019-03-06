@@ -5,7 +5,6 @@ isDirectorySync,
 readDirectorySync,
 isFileSync,
 markedLinks, getAttr, readFileSync} from './controller.js'
-import { readFileSync } from 'fs';
 
 export const mdLinks = (root, options) => {
     let answer;

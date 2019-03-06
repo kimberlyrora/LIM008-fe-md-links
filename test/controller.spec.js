@@ -7,8 +7,7 @@ import { isAbsolute,
     readDirectoryAsync, 
     readFileSync, 
     markedLinks,
-    getAttr} from '../src/controller.js';
-    
+    getLinks, validLinks, returnTrue} from '../src/controller.js';
 import {mdLinks} from '../src/mdLinks.js'
 describe('isAbsolute', () => {
     it('Debería ser una función', () => {
@@ -26,7 +25,6 @@ describe('convertToAbsolute', () => {
         expect(typeof convertToAbsolute).toBe('function');
     });
     it('Debería devolver una ruta absoluta a partir de una ruta relativa', () => {
-        // console.log(convertToAbsolute('.\\recursión'));
         expect(convertToAbsolute('.\\recursión')).toBe('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\recursión');
     });
 });
@@ -62,6 +60,7 @@ describe('isDirectoryAsync', () => {
         isDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src', cb)
     });
 });
+// Test para isFileSync
 describe('isFileSync', () => {
     it('Deberia ser una función', () => {
         expect (typeof isFileSync).toBe('function');
@@ -82,9 +81,6 @@ describe('readDirectorySync', () => {
         //    console.log(readDirectorySync('C:\\Users\\Laboratoria\\Desktop'));
         expect(readDirectorySync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest')).toEqual(['C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
     });
-    // it('Debería devolver false si la ruta no es un directorio', () => {
-    //     expect(isDirectory('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\src\\controller.js')).toBe(false);
-    // });
 });
 // Test para readDirectoryAsync
 // describe('readDirectoryAsync', () => {
@@ -99,26 +95,27 @@ describe('readDirectorySync', () => {
 //         readDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest',callback)
 //     });
 // });
+
 // Test para recorrear array de rutas de archivos .md
-describe('readArrayFiles', () => {
-    it('Debería ser una función', () => {
-        expect(typeof readArrayFiles).toBe('function');
-    });
-    it('Debería devolver un array con las rutas absolutas de los archivos .md que se encuentran en el directorio', (done) => {
-        const callback = (undefined, result) => {
-            console.log(result);
-            done();
-        };
-        readDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest',callback)
-    });
-});
+// describe('readDirectoryAsync', () => {
+//     it('Debería ser una función', () => {
+//         expect(typeof readDirectoryAsync).toBe('function');
+//     });
+//     it('Debería devolver un array con las rutas absolutas de los archivos .md que se encuentran en el directorio', (done) => {
+//         const callback = (undefined, result) => {
+//             console.log(result);
+//             done();
+//         };
+//         readDirectoryAsync('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest',callback)
+//     });
+// });
 // Test para readFileSync
 describe('readFileSync', () => {
     it('Debería ser una función', () => {
         expect(typeof readFileSync).toBe('function');
     });
     it('Debería devolver el contenido del archivo .md', () => {
-           console.log(readFileSync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md'));
+        //    console.log(readFileSync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md'));
          expect(readFileSync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md')).toEqual('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)');
     });
 });
@@ -134,16 +131,16 @@ describe('markedLinks', () => {
 
 
 // Test para getAttribute
-describe('getAttr', () => {
+describe('getLinks', () => {
     it('Debería ser una función', () => {
-        expect(typeof getAttr).toBe('function');
+        expect(typeof getLinks).toBe('function');
     });
-    it('Debería devolver el contenido del archivo .md', () => {
-        console.log(getAttr('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'));
+    fit('Debería devolver el contenido del archivo .md', () => {
+        console.log(getLinks(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']));
         //  expect(markedLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toEqual('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>' + '\n');
     });
 });
-
+// TEST PARA MDLINKS
 describe('mdLinks', () => {
     it('Debería ser una función', () => {
         expect(typeof mdLinks).toBe('function');
@@ -153,12 +150,17 @@ describe('mdLinks', () => {
         //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
     });
 });
-describe('mdLinks', () => {
+// Test para validar links
+describe('validLinks', () => {
     fit('Debería ser una función', () => {
-        expect(typeof getAttr).toBe('function');
+        expect(typeof validLinks).toBe('function');
     });
-    fit('Debería devolver el contenido del archivo .md', () => {
-        console.log(getAttr('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'));
-        //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
+    fit('Debería devolver el status del link', () => {
+        return validLinks().then(data => {
+             console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
+            
+        });
+        // console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
+    //     //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
     });
 });
