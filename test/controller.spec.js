@@ -7,7 +7,7 @@ import { isAbsolute,
     readDirectoryAsync, 
     readFileSync, 
     markedLinks,
-    getLinks} from '../src/controller.js';
+    getLinks, validLinks} from '../src/controller.js';
 import {mdLinks} from '../src/mdLinks.js'
 describe('isAbsolute', () => {
     it('Debería ser una función', () => {
@@ -132,7 +132,7 @@ describe('markedLinks', () => {
 
 // Test para getAttribute
 describe('getLinks', () => {
-    fit('Debería ser una función', () => {
+    it('Debería ser una función', () => {
         expect(typeof getLinks).toBe('function');
     });
     fit('Debería devolver el contenido del archivo .md', () => {
@@ -148,5 +148,15 @@ describe('mdLinks', () => {
     it('Debería devolver el contenido del archivo .md', () => {
         console.log(mdLinks('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest'));
         //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
+    });
+});
+// Test para validar links
+describe('validLinks', () => {
+    fit('Debería ser una función', () => {
+        expect(typeof validLinks).toBe('function');
+    });
+    fit('Debería devolver el contenido del archivo .md', () => {
+        console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
+    //     //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
     });
 });

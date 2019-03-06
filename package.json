@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "markdown-it": "^8.4.2",
-    "marked": "^0.6.1"
+    "marked": "^0.6.1",
+    "node-fetch": "^2.3.0"
   }
 }

@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const myMarked =  require('marked');
 const renderer = new myMarked.Renderer();
-
+const fetch = require('node-fetch');
 
 /**
  * @param {ruta a verificar} route
@@ -119,10 +119,22 @@ export const readDirectoryAsync = (route, callback) => {
       route.forEach((file) => {
           const readMd = readFileSync(file).toString();
           renderer.link = (href,title,text) => {
-              arrayLink.push({href,text,file:file});
+              arrayLink.push({href,text: text.substring(0,50),file:file});
           };
          myMarked(readMd, {renderer});    
         });
         return arrayLink;
     };
-console.log(getLinks(readDirectorySync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest')));
+/**
+ * 
+ * @param {link a validar} href
+ * @returns string ok or fail 
+ */
+
+export const validLinks = async(link) => {
+ const prom = await fetch(link.ok);
+   return prom
+//    .then(res => console.log(res.status))
+//    .catch(err => console.log(err));
+}
+console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
