@@ -188,11 +188,9 @@ export const readDirectoryAsync = (route, callback) => {
     }; */
     //console.log(returnTrue('https://es.wikipedia.org/wiki/Markdown'));
 export const validLinks = (link) => {
-      fetch(link)
-        .then((response)=>{
-            console.log(response.status);
-            console.log(response.statusText);
-            
-        });
+      return fetch(link)
+        // .then((response)=>{
+        //     console.log(response.status);            
+        // });
     }
-console.log(validLinks('https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asin'));
+// console.log(validLinks('https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asin'));

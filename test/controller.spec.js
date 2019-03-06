@@ -155,10 +155,11 @@ describe('validLinks', () => {
     fit('Debería ser una función', () => {
         expect(typeof validLinks).toBe('function');
     });
-    fit('Debería devolver el status del link', () => {
-        return validLinks().then(data => {
-             console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
-            
+    fit('Debería devolver el status del link', (done) => {
+        return validLinks('https://es.wikipedia.org/wiki/Markdown')
+         .then(response => {
+           expect(response.status).toBe(200);
+           done();
         });
         // console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
     //     //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
