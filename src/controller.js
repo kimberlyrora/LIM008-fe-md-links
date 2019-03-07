@@ -67,7 +67,6 @@ arrayReadDir.push(afterFile);
 })
 return arrayReadDir;
 };
-
   /**
    * 
    * @param {Ruta a leer archivo} route
@@ -97,10 +96,17 @@ return arrayReadDir;
  * 
  * @param {link a validar} href
  * @returns string ok or fail 
- */
+//  */
+// async function returnTrue(data) {
+//     let promise = new Promise((resolve,reject) =>{
+//         resolve(fetch(data).then(res => res.status))});
+//         let result= await promise;
+//         console.log(result);
+//     };
+//     returnTrue('https://es.wikipedia.org/wiki/Markdown');
 
 
-const validateStats = (arrPaths) => {
+export const validLinks = (arrPaths) => {
      const arrObj = getLinks(arrPaths);
     const arrLinks = arrObj.map(link => fetch(link.href)
     .then((response)=>{
@@ -125,6 +131,6 @@ const validateStats = (arrPaths) => {
     }))
   }
 
-  validateStats(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
+//   validLinks(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
 
  
