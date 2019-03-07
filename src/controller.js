@@ -67,29 +67,6 @@ arrayReadDir.push(afterFile);
 })
 return arrayReadDir;
 };
-// /**
-//  * Función asincrona recursiva readDirectory
-//  * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
-//  * @param {array con archivos markdown} callback 
-//  * @returns callback
-//  */
-// export const readDirectoryAsync = (route, callback) => {
-//   fs.stat(route, (err, files) => {
-//       const result = files.readdir();
-//       console.log(result);
-//       callback(null, result);
-//   })}
-/**
- * 
- * @param {Array con rutas de archivos .md} arr
- * @returns  
- */
-export const readDirectoryAsync = (route, callback) => {
-  fs.stat(route, (err, files) => {
-      const result = files.readdir();
-    //   console.log(result);
-      callback(null, result);
-  })}
   /**
    * 
    * @param {Ruta a leer archivo} route
@@ -101,22 +78,12 @@ export const readDirectoryAsync = (route, callback) => {
   }
   /**
    * 
-   * @param {contenido de archivo .md} content 
-   * @returns 
-   */
-  export const markedLinks = (content) => {
-    const markdown = md.render(content);
-    return markdown;
-    
-  }
-  /**
-   * 
    * @param {estructura Html} markCont
    * @returns array de links 
    */
-  export const getLinks = (route) => {
+  export const getLinks = (arrRoutes) => {
       let arrayLink = [];
-      route.forEach((file) => {
+      arrRoutes.forEach((file) => {
           const readMd = readFileSync(file).toString();
           renderer.link = (href,title,text) => {
               arrayLink.push({href,text: text.substring(0,50),file:file});
@@ -138,45 +105,32 @@ export const readDirectoryAsync = (route, callback) => {
 //     };
 //     returnTrue('https://es.wikipedia.org/wiki/Markdown');
 
-//    export  async function returnTrue() {
-  
-//         // create a new promise inside of the async function
-//         let promise = new Promise((resolve, reject) => {
-//           setTimeout(() => resolve(true), 1000) // resolve
-//         });
-        
-//         // wait for the promise to resolve
-//         let result = await promise;
-         
-//         // console log the result (true)
-//         console.log(result);
-//     };
-// console.log(returnTrue());
-// function hello(link) {
-//     return new Promise(resolve => {
-//         resolve(fetch(link.ok));
-//     });
-//   }
-  
-//   async function validLinks() {
-//     var result = await hello();
-//     console.log(result);
-//     // expected output: 'resolved'
-//   }
-  
-//   validLinks();
 
-/*   function resolveAfter2Seconds(link) {
-    return new Promise(resolve => {
-        resolve(fetch(link));
-    });
+export const validLinks = (arrPaths) => {
+     const arrObj = getLinks(arrPaths);
+    const arrLinks = arrObj.map(link => fetch(link.href)
+    .then((response)=>{
+     if(response.status>=200 && response.status<400){
+        link.status = response.status;
+        link.statusText = response.statusText;
+       }else{
+        link.status = response.status;
+        link.statusText = 'fail';
+       }
+    }))
+   // console.log(arrLinks);
+
+    return Promise.all(arrLinks)
+      .then(() => console.log(arrObj))
+
+  // })
+  //    console.log(arrObj);
+  //   })
+    .catch((error) => ({
+     error
+    }))
   }
-  
-  
-  async function validLinks(x) {
-    const a = await resolveAfter2Seconds(x);
-    return a;
-  }
+<<<<<<< HEAD
   
   validLinks('https://es.wikipedia.org/wiki/Markdown').then(v => v.ok);
  */
@@ -202,3 +156,9 @@ console.log(validLinks('https://developer.mozilla.org/es/docs/Web/JavaScript/Ref
 
 console.log(validLinks('https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asin'));
  */
+=======
+
+//   validLinks(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
+
+ 
+>>>>>>> f222224615a1d51639db19c880961560a04425b8
