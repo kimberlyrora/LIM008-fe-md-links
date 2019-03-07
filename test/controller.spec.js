@@ -151,12 +151,12 @@ describe('mdLinks', () => {
     });
 });
 // Test para validar links
-describe('validLinks', () => {
-    fit('Debería ser una función', () => {
-        expect(typeof validLinks).toBe('function');
-    });
-    fit('Debería devolver el contenido del archivo .md', () => {
-        console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
-    //     //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
-    });
-});
+// describe('validLinks', () => {
+//     fit('Debería ser una función', () => {
+//         expect(typeof validLinks).toBe('function');
+//     });
+//     fit('Debería devolver el contenido del archivo .md', () => {
+//         console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
+//     //     //  expect(mdLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toBe('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>'+'\n');
+//     });
+// });

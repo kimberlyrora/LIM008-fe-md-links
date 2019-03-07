@@ -67,29 +67,7 @@ arrayReadDir.push(afterFile);
 })
 return arrayReadDir;
 };
-// /**
-//  * Función asincrona recursiva readDirectory
-//  * @param {Directorio a leer y del cual se va obtener el array de archivos .md} route 
-//  * @param {array con archivos markdown} callback 
-//  * @returns callback
-//  */
-// export const readDirectoryAsync = (route, callback) => {
-//   fs.stat(route, (err, files) => {
-//       const result = files.readdir();
-//       console.log(result);
-//       callback(null, result);
-//   })}
-/**
- * 
- * @param {Array con rutas de archivos .md} arr
- * @returns  
- */
-export const readDirectoryAsync = (route, callback) => {
-  fs.stat(route, (err, files) => {
-      const result = files.readdir();
-      console.log(result);
-      callback(null, result);
-  })}
+
   /**
    * 
    * @param {Ruta a leer archivo} route
@@ -101,22 +79,12 @@ export const readDirectoryAsync = (route, callback) => {
   }
   /**
    * 
-   * @param {contenido de archivo .md} content 
-   * @returns 
-   */
-  export const markedLinks = (content) => {
-    const markdown = md.render(content);
-    return markdown;
-    
-  }
-  /**
-   * 
    * @param {estructura Html} markCont
    * @returns array de links 
    */
-  export const getLinks = (route) => {
+  export const getLinks = (arrRoutes) => {
       let arrayLink = [];
-      route.forEach((file) => {
+      arrRoutes.forEach((file) => {
           const readMd = readFileSync(file).toString();
           renderer.link = (href,title,text) => {
               arrayLink.push({href,text: text.substring(0,50),file:file});
@@ -131,10 +99,32 @@ export const readDirectoryAsync = (route, callback) => {
  * @returns string ok or fail 
  */
 
-export const validLinks = async(link) => {
- const prom = await fetch(link.ok);
-   return prom
-//    .then(res => console.log(res.status))
-//    .catch(err => console.log(err));
-}
-console.log(validLinks('https://es.wikipedia.org/wiki/Markdown'));
+
+const validateStats = (arrPaths) => {
+     const arrObj = getLinks(arrPaths);
+    const arrLinks = arrObj.map(link => fetch(link.href)
+    .then((response)=>{
+     if(response.status>=200 && response.status<400){
+        link.status = response.status;
+        link.statusText = response.statusText;
+       }else{
+        link.status = response.status;
+        link.statusText = 'fail';
+       }
+    }))
+   // console.log(arrLinks);
+
+    return Promise.all(arrLinks)
+      .then(() => console.log(arrObj))
+
+  // })
+  //    console.log(arrObj);
+  //   })
+    .catch((error) => ({
+     error
+    }))
+  }
+
+  validateStats(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
+
+ 
