@@ -130,35 +130,7 @@ export const validLinks = (arrPaths) => {
      error
     }))
   }
-<<<<<<< HEAD
-  
-  validLinks('https://es.wikipedia.org/wiki/Markdown').then(v => v.ok);
- */
-  /* async function returnTrue(data) {
-    let promise = new Promise((resolve,reject) =>{
-        resolve(fetch(data))});
-        let result= await promise;
-        console.log(result.status);
-    }; */
-    //console.log(returnTrue('https://es.wikipedia.org/wiki/Markdown'));
-export const validLinks = (link) => 
-    fetch(link)
-    .then((response)=> {
-        console.log(response.status);
-        return response;
-    });
-
-console.log(validLinks('https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asin'));
-
-/* export const estadoLink = (link) => {
-//  return  fetch(link)/*.then((response) => console.log(response.status));
-}
-
-console.log(validLinks('https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asin'));
- */
-=======
 
 //   validLinks(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
 
  
->>>>>>> f222224615a1d51639db19c880961560a04425b8
