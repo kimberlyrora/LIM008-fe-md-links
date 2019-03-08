@@ -118,19 +118,13 @@ export const validLinks = (arrPaths) => {
         link.statusText = 'fail';
        }
     }))
-   // console.log(arrLinks);
-
     return Promise.all(arrLinks)
-      .then(() => console.log(arrObj))
+      .then(() => {return arrObj
+    }).catch((error) => {
+     return error
+    });
+  };
 
-  // })
-  //    console.log(arrObj);
-  //   })
-    .catch((error) => ({
-     error
-    }))
-  }
-
-//   validLinks(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
+  validLinks(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']);
 
  

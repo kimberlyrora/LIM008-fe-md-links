@@ -166,7 +166,7 @@ describe('validLinks', () => {
     fit('Debería devolver el status del link', (done) => {
         return validLinks(arrRoutes)
          .then(arrRoute => {
-            console.log (arrRoute);
+            arrRoute;
            expect(arrRoute).toEqual(linkValidate);
            done();
          });
