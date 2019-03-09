@@ -135,7 +135,7 @@ describe('getLinks', () => {
     it('Debería ser una función', () => {
         expect(typeof getLinks).toBe('function');
     });
-    fit('Debería devolver el contenido del archivo .md', () => {
+    it('Debería devolver el contenido del archivo .md', () => {
         console.log(getLinks(['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']));
         //  expect(markedLinks('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)')).toEqual('<p>HOLA Como estas <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a></p>' + '\n');
     });
@@ -151,16 +151,16 @@ describe('mdLinks', () => {
     });
 });
 // Test para validar links
-const arrRoutes = ['C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']
+const arrRoutes = ['C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md']
 const linkValidate =    [ { href: 'https://es.wikipedia.org/wiki/Markdown',
 text: 'Markdown',
 file:
- 'C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
+ 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
 status: 200,
 statusText: 'OK' } ];
 
-describe('validLinks', () => {
-    fit('Debería ser una función', () => {
+describe.only('validLinks', () => {
+    it('Debería ser una función', () => {
         expect(typeof validLinks).toBe('function');
     });
     fit('Debería devolver el status del link', (done) => {
