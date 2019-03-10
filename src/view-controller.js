@@ -20,10 +20,17 @@ export const readRoute = ruta => {
  */
 export const crearTemplateDeArray = (data) => {
   let templateListOfLinks = '';
+  let obj;
   data.forEach((link) => {
-    const obj = `
+    if (link.status === undefined && link.statusText === undefined) {
+      obj = `
+        ${link.file}, ${link.href}, ${link.text}
+        `;
+    } else { 
+      obj = `
         ${link.file}, ${link.href}, ${link.text}, ${link.status}, ${link.statusText}
         `;
+    }
     templateListOfLinks += obj;
   });
   return templateListOfLinks;

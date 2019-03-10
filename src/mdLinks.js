@@ -4,7 +4,7 @@ import { stats } from './stats.js';
 import {validLinks} from './validate.js';
 import {readRoute, crearTemplateDeArray } from './view-controller.js';
 const options = {
-  validate: false,
+  validate: true,
   status: false
 };
 /**
