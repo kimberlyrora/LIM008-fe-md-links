@@ -1,12 +1,8 @@
 import { getLinks } from './obtainingLinks.js';
-import { readDirectorySync } from './controller-recursion';
+import { readDirectorySync } from './recursion';
 import { stats } from './stats.js';
 import {validLinks} from './validate.js';
 import {readRoute, crearTemplateDeArray } from './view-controller.js';
-const options = {
-  validate: true,
-  status: false
-};
 /**
  * Función que entrega resultados varaiando según el parametro obj
  * @param {Ruta de la cual se extraeran todos los links de los archivos .md que se encuentren} route 
@@ -38,5 +34,5 @@ export const mdLinks = (route, obj) =>
       resolve(crearTemplateDeArray(arrLink));
     }
   });
-mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md', options).then(resp => console.log(resp));
+// mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md', options).then(resp => console.log(resp));
 

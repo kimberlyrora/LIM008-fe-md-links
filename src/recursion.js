@@ -1,5 +1,6 @@
 import {isFileSync, extFile, isDirectorySync} from './pathAndFs.js';
 const path = require('path');
+const fs = require('fs');
 /**
  * Función que lee la ruta del directorio hasta encontrar todas la rutas de archivos markdown y guardarlos en un array
  * @param {Ruta de directorio a leer} route
