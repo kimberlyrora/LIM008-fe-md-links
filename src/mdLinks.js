@@ -35,5 +35,5 @@ export const mdLinks = (route, obj) =>
       resolve(crearTemplateDeArray(arrLink));
     }
   });
-mdLinks('..\\directoryForTest', options).then(resp => console.log('soloyo', resp));
+mdLinks('..\\FILEMD.md', options).then(resp => console.log('soloyo', resp));
 

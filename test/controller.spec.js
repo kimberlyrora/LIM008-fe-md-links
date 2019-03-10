@@ -2,7 +2,6 @@ import {
   isAbsolute,
   convertToAbsolute,
   isDirectorySync,
-  isDirectoryAsync,
   readDirectorySync,
   isFileSync,
   readFileSync,
@@ -11,23 +10,24 @@ import {
 } from '../src/controller.js';
 import { mdLinks } from '../src/mdLinks.js';
 
-describe('isAbsolute', () => {
-  fit('Debería ser una función', () => {
+describe.only('isAbsolute', () => {
+  it('Debería ser una función', () => {
     expect(typeof isAbsolute).toBe('function');
   });
-  fit('Debería devolver true si es ruta absoluta', () => {
+  it('Debería devolver true si es ruta absoluta', () => {
     expect(isAbsolute('C:\\My Program\\recursión')).toBe(true);
   });
-  fit('Debería devolver false si es una función relativa', () => {
+  it('Debería devolver false si es una función relativa', () => {
     expect(isAbsolute('.\\recursión')).toBe(false);
   });
 });
-describe('convertToAbsolute', () => {
+describe.only('convertToAbsolute', () => {
   it('Debería ser una función', () => {
     expect(typeof convertToAbsolute).toBe('function');
   });
   it('Debería devolver una ruta absoluta a partir de una ruta relativa', () => {
-    expect(convertToAbsolute('.\\recursión')).toBe('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\recursión');
+    // console.log(convertToAbsolute('..\\..\\markdown\\LIM008-fe-md-links'));
+    expect(convertToAbsolute('.\\..\\LIM008-fe-md-links')).toBe('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links');
   });
 });
 // Test para isDirectorySync

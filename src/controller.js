@@ -42,7 +42,7 @@ export const extFile = route => path.extname(route);
  */
 export const readDirectorySync = route => {
   let arrayReadDir = [];
-  if (isFileSync(route)) {
+  if (isFileSync(route) && extFile(route) === '.md') {
     arrayReadDir.push(route);
   } else {
     const hadReadDir = fs.readdirSync(route);
@@ -128,3 +128,4 @@ export const readRoute = ruta => {
   }
   return rutaAbs;
 };
+
