@@ -7,7 +7,7 @@ import {
   readFileSync,
   markedLinks,
   getLinks, validLinks, 
-} from '../src/controller.js';
+} from '../src/pathAndFs.js/index.js';
 import { mdLinks } from '../src/mdLinks.js';
 
 describe.only('isAbsolute', () => {

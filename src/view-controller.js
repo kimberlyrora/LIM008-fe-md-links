@@ -1,26 +1,16 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.crearTemplateDeArray = exports.readRoute = void 0;
-
-var _pathAndFs = require("./pathAndFs.js");
-
+import {isAbsolute, convertToAbsolute} from './pathAndFs.js';
 /**
  * Función donde se arma condicionales para la lectura de ruta y aplicar primeras funciones 
  * @param {Ruta a la que se le aplicará las funciones isAbsolute y convertToAbsolute} ruta
  * @returns string: ruta absoluta 
  */
-const readRoute = ruta => {
+export const readRoute = ruta => {
   let rutaAbs;
-
-  if ((0, _pathAndFs.isAbsolute)(ruta)) {
+  if (isAbsolute(ruta)) {
     rutaAbs = ruta;
   } else {
-    rutaAbs = (0, _pathAndFs.convertToAbsolute)(ruta);
+    rutaAbs = convertToAbsolute(ruta);
   }
-
   return rutaAbs;
 };
 /**
@@ -28,13 +18,9 @@ const readRoute = ruta => {
  * @param {Array de objetos} data
  * @returns template con propiedades del parametro pasado 
  */
-
-
-exports.readRoute = readRoute;
-
-const crearTemplateDeArray = data => {
+export const crearTemplateDeArray = (data) => {
   let templateListOfLinks = '';
-  data.forEach(link => {
+  data.forEach((link) => {
     const obj = `
         ${link.file}, ${link.href}, ${link.text}, ${link.status}, ${link.statusText}
         `;
@@ -42,5 +28,3 @@ const crearTemplateDeArray = data => {
   });
   return templateListOfLinks;
 };
-
-exports.crearTemplateDeArray = crearTemplateDeArray;
