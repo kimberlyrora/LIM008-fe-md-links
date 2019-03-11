@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "bin": {
-    "md-links": "src/cli.js"
+    "md-links": "lib/cli.js"
   },
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",

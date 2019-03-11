@@ -1,5 +1,12 @@
 #!/usr/bin/env node
-
+import {mdLinks} from './controller/mdLinks.js';
 const [,, ...args] = process.argv;
-import {} from './controller/mdLinks.js';
-console.log(`Hello World ${args}`);
+const options = {
+  validate: false,
+  status: false
+};
+// console.log(`Hello World ${args}`);
+const route = args[0];
+if (args.length === 1) {
+  mdLinks(route, options).then(resp => console.log(resp));
+}
