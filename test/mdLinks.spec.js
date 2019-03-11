@@ -35,28 +35,28 @@ describe('mdLinks', () => {
     expect(typeof mdLinks).toBe('function');
   });
   it('Debería devolver los links con sus propiedades href, text y file', (done) => {
-    return mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest', options1)
+    return mdLinks(`${process.cwd()}\\directoryForTest`, options1)
       .then(resp => {
         expect(resp).toBe(output1);
         done();
       });
   });
   it('Debería devolver los links con sus propiedades href, text, file, status y statusText', (done) => {
-    return mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest', options2)
+    return mdLinks(`${process.cwd()}\\directoryForTest`, options2)
       .then(resp => {
         expect(resp).toBe(output2);
         done();
       });
   });
   it('Debería devolver el calculo de los links únicos y totales', (done) => {
-    return mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest', options3)
+    return mdLinks(`${process.cwd()}\\directoryForTest`, options3)
       .then(resp => {
         expect(resp).toBe(output3);
         done();
       });
   });
   it('Debería devolver el calculo de los links únicos, rotos y  totales', (done) => {
-    return mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest', options4)
+    return mdLinks(`${process.cwd()}\\directoryForTest`, options4)
       .then(resp => {
         expect(resp).toBe(output4);
         done();

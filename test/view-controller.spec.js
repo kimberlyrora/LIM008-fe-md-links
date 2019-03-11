@@ -4,10 +4,10 @@ describe('readRoute', () => {
     expect(typeof readRoute).toBe('function');
   });
   it('Debería devolver una ruta relativa convertida en absoluta', () => {
-    expect(readRoute('.\\..\\LIM008-fe-md-links')).toBe('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links');
+    expect(readRoute('.\\..\\LIM008-fe-md-links')).toBe(`${process.cwd()}`);
   });
   it('Debería devolver la misma ruta absoluta que se ingresó', () => {
-    expect(readRoute('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest')).toBe('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest');
+    expect(readRoute(`${process.cwd()}\\directoryForTest`)).toBe(`${process.cwd()}\\directoryForTest`);
   });
 });
 const input1 = [{

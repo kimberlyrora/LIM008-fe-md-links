@@ -2,37 +2,37 @@ import { uniqueLinks, brokenLinks, stats } from '../src/stats.js';
 const input = [{
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
-  file: 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
+  file: `${process.cwd()}\\directoryForTest\\FILEMD.md`,
   status: 200,
   statusText: 'OK'
 }, {
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
-  file: 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
+  file: `${process.cwd()}\\directoryForTest\\FILEMD.md`,
   status: 200,
   statusText: 'OK'
 }, {
   href: 'https://www.w3schools.com/jsref/jsref_reduce.asp',
   text: 'Markdown',
-  file: 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
+  file: `${process.cwd()}\\directoryForTest\\FILEMD.md`,
   status: 200,
   statusText: 'OK'
 }, {
   href: 'https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_reduce2',
   text: 'Markdown',
-  file: 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
+  file: `${process.cwd()}\\directoryForTest\\FILEMD.md`,
   status: 200,
   statusText: 'OK'
 }, {
   href: 'https://www.w3schools.com/jsref/tryit.asp?filename=tryjs',
   text: 'Pruebita',
-  file: 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
+  file: `${process.cwd()}\\directoryForTest\\FILEMD.md`,
   status: 200,
   statusText: 'OK'
 }, {
   href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Refere',
   text: 'Prueba',
-  file: 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md',
+  file: `${process.cwd()}\\directoryForTest\\FILEMD.md`,
   status: 404,
   statusText: 'fail'
 }];

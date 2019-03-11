@@ -17,7 +17,7 @@ describe('convertToAbsolute', () => {
     expect(typeof convertToAbsolute).toBe('function');
   });
   it('Debería devolver una ruta absoluta a partir de una ruta relativa', () => {
-    expect(convertToAbsolute('.\\..\\LIM008-fe-md-links')).toBe('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links');
+    expect(convertToAbsolute('.\\..\\LIM008-fe-md-links')).toBe(`${process.cwd()}`);
   });
 });
 // Test para isDirectorySync
@@ -26,10 +26,10 @@ describe('isDirectorySync', () => {
     expect(typeof isDirectorySync).toBe('function');
   });
   it('Debería devolver true si la ruta es un directorio', () => {
-    expect(isDirectorySync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links')).toBe(true);
+    expect(isDirectorySync(`${process.cwd()}`)).toBe(true);
   });
   it('Debería devolver false si la ruta no es un directorio', () => {
-    expect(isDirectorySync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\directoryExample\\FILEMD2.md')).toBe(false);
+    expect(isDirectorySync(`${process.cwd()}\\directoryForTest\\directoryExample\\FILEMD2.md`)).toBe(false);
   });
 });
 
@@ -39,10 +39,10 @@ describe('isFileSync', () => {
     expect(typeof isFileSync).toBe('function');
   });
   it('Debería devolver true si es un archivo', () => {
-    expect(isFileSync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\directoryExample\\FILEMD2.md')).toBe(true);
+    expect(isFileSync(`${process.cwd()}\\directoryForTest\\directoryExample\\FILEMD2.md`)).toBe(true);
   });
   it('Debería devolver false si no es un archivo', () => {
-    expect(isFileSync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links')).toBe(false);
+    expect(isFileSync(`${process.cwd()}`)).toBe(false);
   });
 });
 // Test para readFileSync
@@ -51,7 +51,7 @@ describe('readFileSync', () => {
     expect(typeof readFileSync).toBe('function');
   });
   it('Debería devolver el contenido del archivo .md', () => {
-    expect(readFileSync('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md').toString()).toBe('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)');
+    expect(readFileSync(`${process.cwd()}\\directoryForTest\\FILEMD.md`).toString()).toBe('HOLA Como estas [Markdown](https://es.wikipedia.org/wiki/Markdown)');
   });
 });
 
