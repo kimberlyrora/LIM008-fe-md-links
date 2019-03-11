@@ -12,27 +12,28 @@ import {readRoute, crearTemplateDeArray } from './view-controller.js';
  *          stats: string con calculo de links totales y únicos
  *          validate&&stats:  string con calculo de links totales, únicos y rotos
  */
-export const mdLinks = (route, obj) =>
+
+export const mdLinks = (route, objeto) =>
   new Promise((resolve, reject) => {
-    const absRoute = readRoute(route);
-    const arrArchivosMd = readDirectorySync(absRoute);
-    let arrLink = getLinks(arrArchivosMd);
-    if (obj.validate && obj.status) {
-      validLinks(arrLink)
-        .then(res => {
-          const resuSts = stats(res, 'validate'); 
-          return resuSts;
-        }).then(res => resolve(res));
-    } else if (obj.status) {
-      resolve(stats(arrLink));
-    } else if (obj.validate) {
-      validLinks(arrLink).then((obj) => {
-        const resValid = crearTemplateDeArray(obj);
-        return resValid;
-      }).then(res => resolve(res));
+    const absoluteRoute = readRoute(route);
+    const arrayArchivosMd = readDirectorySync(absoluteRoute);
+    let arrayLink = getLinks(arrayArchivosMd);
+    if (objeto.validate && objeto.stats) {
+      validLinks(arrayLink)
+        .then(response => {
+          const resultStats = stats(response, 'validate'); 
+          return resultStats;
+        }).then(answer => resolve(answer));
+    } else if (objeto.stats) {
+      resolve(stats(arrayLink));
+    } else if (objeto.validate) {
+      validLinks(arrayLink).then((objeto) => {
+        const resultValidate = crearTemplateDeArray(objeto);
+        return resultValidate;
+      }).then(response => resolve(response));
     } else {
-      resolve(crearTemplateDeArray(arrLink));
+      resolve(crearTemplateDeArray(arrayLink));
     }
   });
-// mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md', options).then(resp => console.log(resp));
+
 

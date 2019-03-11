@@ -1,8 +1,8 @@
 {
-  "name": "social-network",
+  "name": "md-links",
   "version": "1.0.0",
-  "description": "Social Network @ Laboratoria",
-  "main": "src/index.html",
+  "description": "MD-Links @ Laboratoria",
+  "main": "lib/controller.mdLinks.js",
   "keywords": [
     "javascript",
     "npm",
@@ -32,5 +32,14 @@
     "markdown-it": "^8.4.2",
     "marked": "^0.6.1",
     "node-fetch": "^2.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimberlyrora/LIM008-fe-md-links"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/kimberlyrora/LIM008-fe-md-links/issues"
+  },
+  "homepage": "https://github.com/kimberlyrora/LIM008-fe-md-links#readme"
 }
