@@ -35,14 +35,14 @@ describe('mdLinks', () => {
     expect(typeof mdLinks).toBe('function');
   });
   it('Debería devolver los links con sus propiedades href, text y file', (done) => {
-    return mdLinks(`${process.cwd()}\\directoryForTest`, options1)
+    return mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest', options1)
       .then(resp => {
         expect(resp).toBe(output1);
         done();
       });
   });
   it('Debería devolver los links con sus propiedades href, text, file, status y statusText', (done) => {
-    return mdLinks(`${process.cwd()}\\directoryForTest`, options2)
+    return mdLinks('C:\\Users\\User\\Desktop\\markdown\\LIM008-fe-md-links\\directoryForTest', options2)
       .then(resp => {
         expect(resp).toBe(output2);
         done();
