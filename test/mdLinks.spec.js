@@ -1,4 +1,4 @@
-import { mdLinks } from '../src/mdLinks.js';
+import { mdLinks } from '../src/controller/mdLinks.js';
 // TEST PARA MDLINKS
 const options1 = {
   validate: false,

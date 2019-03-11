@@ -1,4 +1,4 @@
-import { getLinks } from '../src/obtainingLinks.js';
+import { getLinks } from '../src/controller/obtainingLinks.js';
 // Test para getLinks
 const output = [{ 
   href: 'https://es.wikipedia.org/wiki/Markdown',

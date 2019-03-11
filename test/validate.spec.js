@@ -1,4 +1,4 @@
-import {validLinks} from '../src/validate.js';
+import {validLinks} from '../src/controller/validate.js';
 // Input para link válido
 const arrLinks = [{
   href: 'https://es.wikipedia.org/wiki/Markdown',

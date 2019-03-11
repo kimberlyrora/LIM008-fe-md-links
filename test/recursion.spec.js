@@ -1,4 +1,4 @@
-import { readDirectorySync } from '../src/recursion.js';
+import { readDirectorySync } from '../src/controller/recursion.js';
 const outputForThirdCase = [`${process.cwd()}\\directoryForTest\\directoryExample\\FILEMD2.md`,
   `${process.cwd()}\\directoryForTest\\FILEMD.md`];
 // Test para readDirectorySync

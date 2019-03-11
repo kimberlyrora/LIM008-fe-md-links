@@ -1,4 +1,4 @@
-import { readRoute, crearTemplateDeArray } from '../src/view-controller.js';
+import { readRoute, crearTemplateDeArray } from '../src/controller/view-controller.js';
 describe('readRoute', () => {
   it('Debería ser una función', () => {
     expect(typeof readRoute).toBe('function');

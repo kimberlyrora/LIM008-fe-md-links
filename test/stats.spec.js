@@ -1,4 +1,4 @@
-import { uniqueLinks, brokenLinks, stats } from '../src/stats.js';
+import { uniqueLinks, brokenLinks, stats } from '../src/controller/stats.js';
 const input = [{
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',

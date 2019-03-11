@@ -1,5 +1,5 @@
 import { getLinks } from './obtainingLinks.js';
-import { readDirectorySync } from './recursion';
+import { readDirectorySync } from './recursion.js';
 import { stats } from './stats.js';
 import {validLinks} from './validate.js';
 import {readRoute, crearTemplateDeArray } from './view-controller.js';

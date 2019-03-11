@@ -1,4 +1,4 @@
-import { isAbsolute, convertToAbsolute, isDirectorySync, isFileSync, readFileSync, extFile } from '../src/pathAndFs.js';
+import { isAbsolute, convertToAbsolute, isDirectorySync, isFileSync, readFileSync, extFile } from '../src/controller/pathAndFs.js';
 // Test para función isAbsolute
 describe('isAbsolute', () => {
   it('Debería ser una función', () => {
