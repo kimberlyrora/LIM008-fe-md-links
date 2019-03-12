@@ -5,7 +5,7 @@
 ![Flow Chart](https://user-images.githubusercontent.com/45085970/54211481-666e9700-44af-11e9-8218-9157bc9fe06c.jpg)
 
 ## Pseudocódigo
-#####Función isAbsolute()
+###Función isAbsolute()
 **Valor de entrada:** Se ingresa un string: una ruta relativa "./some/example.md" o absoluta "C:\Users\User\Desktop\markdown\LIM008-fe-md-links".
 **Proceso:** Se pregunta si es una ruta absoluta o relativa mediante el método path.isAbsolute().
 **Valor de salida:** Se recibe un booleano: True si es una ruta absoluta, False si es una ruta relativa.
