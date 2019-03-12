@@ -6,61 +6,96 @@
 
 ## Pseudocódigo
 
-###Función isAbsolute()
+##### Función isAbsolute()
 
 **Valor de entrada:** Se ingresa un string: una ruta relativa "./some/example.md" o absoluta "C:\Users\User\Desktop\markdown\LIM008-fe-md-links".
+
 **Proceso:** Se pregunta si es una ruta absoluta o relativa mediante el método path.isAbsolute().
+
 **Valor de salida:** Se recibe un booleano: True si es una ruta absoluta, False si es una ruta relativa.
 
-#####Función convertToAbsolute() 
+##### Función convertToAbsolute() 
 
 **Valor de entrada:** Se ingresa un string: una ruta relativa "./some/example.md".
+
 **Proceso:** Se convierte la ruta relativa a una ruta absoluta a través del método path.resolve().
+
 **Valor de salida:** Se recibe un string: una ruta absoluta "C:\Users\User\Desktop\markdown\LIM008-fe-md-links".
 
-#####Función isDirectorySync()
+##### Función isDirectorySync()
 
 **Valor de entrada:** Se ingresa un string: una ruta absoluta.
+
 **Proceso:** Se pregunta si es un directorio mediante el método fs.statSync.isDirectory();
+
 **Valor de salida:** Se recibe un booleano: True si es un directorio, False si no es un directorio.
-#####Función readDirectorySync()
+
+##### Función readDirectorySync()
+
 **Valor de entrada:** Se ingresa un string: una ruta absoluta "C:\Users\User\Desktop\markdown\LIM008-fe-md-links".
+
 **Proceso:** Se leen los directorios hasta que se encuentren un archivo de extension .md a través del método readdirSync.
+
 **Valor de salida:** Se recibe un array con todas las rutas de los archivos de extensión .md encontrados en la ruta.
-#####Función isFileSync()
+
+##### Función isFileSync()
+
 **Valor de entrada:** Se ingresa un string: una ruta absoluta.
+
 **Proceso:**  Se pregunta si es un archivo mediante el método fs.statSync.isFile();
+
 **Valor de salida:** Se recibe un booleano: True si es un archivo, False si no es un archivo.
 
-#####Función readFileSync()
+##### Función readFileSync()
+
 **Valor de entrada:** Se ingresa un string: una ruta de un archivo .md
+
 **Proceso:**Se lee el contenido de la ruta de archivo ingresada y se convierte a string a través del método fs.readFileSync.
+
 **Valor de salida:** Un string: el contenido del archivo.
-#####Función getLinks()
+
+##### Función getLinks()
+
 **Valor de entrada:** Un array de rutas de archivos .md
+
 **Proceso:** Se recorre cada ruta y se extrae los links a traves de la librería marked y accediendo a su propiedad link, y se recorta el texto del link a 50 caracteres como máximo.
+
 **Valor de salida:** Se recibe un array de objetos donde cada objeto es un link con sus propiedades href, text y file.
-#####Función validLinks()
+
+##### Función validLinks()
+
 **Valor de entrada:**Se ingresa un array de objetos.
+
 **Proceso:**Se recorre el array y se valida el status y el statusText a través de la librería node-fetch
+
 **Valor de salida:** Se recibe un array de objetos al cual se le agregó las propiedades status y statusText a cada elemento.
-#####Función Stats()
+
+##### Función Stats()
+
 **Valor de entrada:** Se ingresa un array de objetos
+
 **Proceso:** Se recorre el array de objetos y a través del método reduce se obtien los links, únicos y rotos y a través de .length se obtien el total de links.
+
 **Valor de salida:** Se obtiene valores tipo number: Total, Únicos y Rotos.
 
 ## Product Backlog
-#####Historia 1
+
+##### Historia 1
 Yo como desarrollador quiero poder descargar el modulo a través de un ejecutable en terminal, porque es mas rápido y directo, y que sea instable desde Github.
-#####Historia 2
+
+##### Historia 2
 Yo como desarrolladora quiero importar el modulo con 'require' para usarlo programaticamente porque lo necesito para realizar mi proyecto.
-#####Historia 3
+
+##### Historia 3
 Yo como desarrolladora quiero que en terminal se muestren los links encontrados en el/los archivos .md que se indico en la ruta con la URL encontrada, el texto dentro del link y la ruta donde se encontró el archivo, porque necesito esos datos para mi proyecto.
-#####Historia 4
+
+##### Historia 4
 Yo como desarrollador quiero averiguar si el link funciona o no y que se muestre si lo hace o no en consola porque quiero saber que links fallan.
-#####Historia 5
-Yo como desarrolladora desea saber el numero de links unicos y totales, para tener una idea clara de la cantidad que son
-#####Historia 6
+
+##### Historia 5
+Yo como desarrolladora desea saber el numero de links unicos y totales, para tener una idea clara de la cantidad que son.
+
+##### Historia 6
 Yo como desarrollador quiero saber el numero de links únicos, totales y rotos porque quiero modificar los archivos .md.
 
 ## Documentación técnica
