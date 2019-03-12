@@ -5,15 +5,21 @@
 ![Flow Chart](https://user-images.githubusercontent.com/45085970/54211481-666e9700-44af-11e9-8218-9157bc9fe06c.jpg)
 
 ## Pseudocódigo
+
 ###Función isAbsolute()
+
 **Valor de entrada:** Se ingresa un string: una ruta relativa "./some/example.md" o absoluta "C:\Users\User\Desktop\markdown\LIM008-fe-md-links".
 **Proceso:** Se pregunta si es una ruta absoluta o relativa mediante el método path.isAbsolute().
 **Valor de salida:** Se recibe un booleano: True si es una ruta absoluta, False si es una ruta relativa.
+
 #####Función convertToAbsolute() 
+
 **Valor de entrada:** Se ingresa un string: una ruta relativa "./some/example.md".
 **Proceso:** Se convierte la ruta relativa a una ruta absoluta a través del método path.resolve().
 **Valor de salida:** Se recibe un string: una ruta absoluta "C:\Users\User\Desktop\markdown\LIM008-fe-md-links".
+
 #####Función isDirectorySync()
+
 **Valor de entrada:** Se ingresa un string: una ruta absoluta.
 **Proceso:** Se pregunta si es un directorio mediante el método fs.statSync.isDirectory();
 **Valor de salida:** Se recibe un booleano: True si es un directorio, False si no es un directorio.
@@ -25,6 +31,7 @@
 **Valor de entrada:** Se ingresa un string: una ruta absoluta.
 **Proceso:**  Se pregunta si es un archivo mediante el método fs.statSync.isFile();
 **Valor de salida:** Se recibe un booleano: True si es un archivo, False si no es un archivo.
+
 #####Función readFileSync()
 **Valor de entrada:** Se ingresa un string: una ruta de un archivo .md
 **Proceso:**Se lee el contenido de la ruta de archivo ingresada y se convierte a string a través del método fs.readFileSync.
