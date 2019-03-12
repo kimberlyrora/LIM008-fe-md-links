@@ -2,7 +2,7 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "MD-Links @ Laboratoria",
-  "main": "lib/controller.mdLinks.js",
+  "main": "lib/controller/mdLinks.js",
   "keywords": [
     "javascript",
     "npm",
