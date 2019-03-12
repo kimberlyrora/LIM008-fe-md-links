@@ -50,7 +50,7 @@
 
 **Valor de entrada:** Se ingresa un string: una ruta de un archivo .md
 
-**Proceso:**Se lee el contenido de la ruta de archivo ingresada y se convierte a string a través del método fs.readFileSync.
+**Proceso:** Se lee el contenido de la ruta de archivo ingresada y se convierte a string a través del método fs.readFileSync.
 
 **Valor de salida:** Un string: el contenido del archivo.
 
@@ -64,9 +64,9 @@
 
 ##### Función validLinks()
 
-**Valor de entrada:**Se ingresa un array de objetos.
+**Valor de entrada:** Se ingresa un array de objetos.
 
-**Proceso:**Se recorre el array y se valida el status y el statusText a través de la librería node-fetch
+**Proceso:** Se recorre el array y se valida el status y el statusText a través de la librería node-fetch
 
 **Valor de salida:** Se recibe un array de objetos al cual se le agregó las propiedades status y statusText a cada elemento.
 
