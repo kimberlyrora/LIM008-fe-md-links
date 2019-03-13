@@ -18,22 +18,14 @@ export const mdLinks = (route, objeto) =>
     const absoluteRoute = readRoute(route);
     const arrayArchivosMd = readDirectorySync(absoluteRoute);
     let arrayLink = getLinks(arrayArchivosMd);
-    if (objeto.validate && objeto.stats) {
-      validLinks(arrayLink)
-        .then(response => {
-          const resultStats = stats(response, 'validate'); 
-          return resultStats;
-        }).then(answer => resolve(answer));
-    } else if (objeto.stats) {
-      resolve(stats(arrayLink));
+    if (objeto === undefined) {
+      resolve(arrayLink);
     } else if (objeto.validate) {
-      validLinks(arrayLink).then((objeto) => {
-        const resultValidate = crearTemplateDeArray(objeto);
-        return resultValidate;
-      }).then(response => resolve(response));
+      validLinks(arrayLink).then((objeto) => resolve(objeto));
     } else {
-      resolve(crearTemplateDeArray(arrayLink));
-    }
+      resolve(arrayLink);
+    };
   });
 
+// mdLinks('C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest', { validate: false }).then(response => console.log(response));
 
