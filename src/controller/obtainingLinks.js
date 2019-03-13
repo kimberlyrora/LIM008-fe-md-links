@@ -10,7 +10,7 @@ export const getLinks = arrRoutes => {
   let arrayLink = [];
   arrRoutes.forEach((file) => {
     const readMd = readFileSync(file).toString();
-    renderer.link = (href, title, text) => {
+    renderer.link = (href, __, text) => {
       arrayLink.push({ href, text: text.substring(0, 50), file: file });
     };
     myMarked(readMd, { renderer });
