@@ -11,7 +11,7 @@ export const readDirectorySync = route => {
   if (isFileSync(route) && extFile(route) === '.md') {
     arrayReadDir.push(route);
   } else {
-    const hadReadDir = fs.readdirSync(route);
+    let hadReadDir = fs.readdirSync(route);
     hadReadDir.forEach((complement) => {
       let afterFile = path.join(route, complement);
       if (isFileSync(afterFile) && extFile(afterFile) === '.md') {

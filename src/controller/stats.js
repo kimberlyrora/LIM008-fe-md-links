@@ -25,6 +25,9 @@ export const brokenLinks = (arrObj) => {
   }, []);
   return arrBroken.length;
 };
+const templateBroke = (arrObj) => `\nTotal: ${arrObj.length}\nUnicos: ${uniqueLinks(arrObj)}\nRotos: ${brokenLinks(arrObj)}`;
+const templateNoBroke = (arrObj) => `\nTotal: ${arrObj.length}\nUnicos: ${uniqueLinks(arrObj)}`;
+
 /**
  * Función que hace estadisticas de los links según el parametro de condición
  * @param {Array de Objeto al que se le aplicara el calculo que se indique} arrObj 
@@ -32,21 +35,11 @@ export const brokenLinks = (arrObj) => {
  * @returns con condición: total, únicos y rotos
  *          sin condición: total y únicos 
  */
-export const stats = (arrObj, condition) => {
-  const valid = condition;
+export const stats = (arrOb, condition) => {
   let result;
-  if (valid === 'validate') {
-    result = `
-Total: ${arrObj.length}
-Unicos: ${uniqueLinks(arrObj)}
-Rotos: ${brokenLinks(arrObj)}
-`;
-  } else {
-    result = `
-Total: ${arrObj.length}
-Unicos: ${uniqueLinks(arrObj)}
-     `;
-  }
+  if (condition === 'validate') {
+    result = templateBroke(arrOb);
+  } else result = templateNoBroke(arrOb);
   return result;
 };
 
