@@ -20,7 +20,7 @@ describe('cliJsFunc', () => {
     expect(typeof cliJsFunc).toBe('function');
   });
   it('Debería devolver un array de objetos donde cada objeto es un link', () => {
-      console.log(cliJsFunc([`${process.cwd()}\\directoryForTest\\FILEMD.md`]));
+    console.log(cliJsFunc([`${process.cwd()}\\directoryForTest\\FILEMD.md`]));
     expect(cliJsFunc([`${process.cwd()}\\directoryForTest\\FILEMD.md`])).toEqual(output);
   });
 });
