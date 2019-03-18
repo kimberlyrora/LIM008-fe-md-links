@@ -37,14 +37,14 @@ export const stats = (arrObj, condition) => {
   let result;
   if (valid === 'validate') {
     result = `
-       Total: ${arrObj.length}
-       Unicos: ${uniqueLinks(arrObj)}
-       Rotos: ${brokenLinks(arrObj)}
-        `;
+Total: ${arrObj.length}
+Unicos: ${uniqueLinks(arrObj)}
+Rotos: ${brokenLinks(arrObj)}
+`;
   } else {
     result = `
-        Total: ${arrObj.length}
-        Unicos: ${uniqueLinks(arrObj)}
+Total: ${arrObj.length}
+Unicos: ${uniqueLinks(arrObj)}
      `;
   }
   return result;
