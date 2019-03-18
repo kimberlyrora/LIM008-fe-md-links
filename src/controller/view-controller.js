@@ -5,6 +5,7 @@ import {convertToAbsolute} from './pathAndFs.js';
  * @returns string: ruta absoluta 
  */
 export const readRoute = ruta => convertToAbsolute(ruta);
+console.log(readRoute('..\\LIM008-fe-md-links\\directoryForTest'));
 /**
  * Función que crea templates a partir del array pasado como parametro
  * @param {Array de objetos} data

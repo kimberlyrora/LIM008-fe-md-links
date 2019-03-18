@@ -13,7 +13,7 @@ import { readRoute } from './view-controller.js';
  */
 
 export const mdLinks = (route, objeto) =>
-  new Promise((resolve, __) => {
+  new Promise((resolve) => {
     const absoluteRoute = readRoute(route);
     const arrayArchivosMd = readDirectorySync(absoluteRoute);
     let arrayLink = getLinks(arrayArchivosMd);
