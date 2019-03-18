@@ -7,7 +7,7 @@ describe('readRoute', () => {
     expect(readRoute('.\\..\\LIM008-fe-md-links')).toBe(`${process.cwd()}`);
   });
   it('Debería devolver la misma ruta absoluta que se ingresó', () => {
-    expect(readRoute(`${process.cwd()}\\directoryForTest`)).toBe(`${process.cwd()}\\directoryForTest`);
+    expect(readRoute(`${process.cwd()}\\directoryForTest`)).toBe(`${process.cwd()}\\directoryForTest`.normalize());
   });
 });
 const input1 = [{
@@ -35,12 +35,12 @@ const input1 = [{
   text: 'Prueba',
   file: 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md'
 }];
-const output1 = '\n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/jsref_reduce.asp, Markdown' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_reduce2, Markdown' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjs, Pruebita' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://developer.mozilla.org/es/docs/Web/JavaScript/Refere, Prueba' + '\n        ';
+const output1 = 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown, , ' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown, , ' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/jsref_reduce.asp, Markdown, , ' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_reduce2, Markdown, , ' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjs, Pruebita, , ' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://developer.mozilla.org/es/docs/Web/JavaScript/Refere, Prueba, , ' + '\n';
 
 const input2 = [{
   href: 'https://es.wikipedia.org/wiki/Markdown',
@@ -79,12 +79,12 @@ const input2 = [{
   status: 404,
   statusText: 'fail'
 }];
-const output2 = '\n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown, 200, OK' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown, 200, OK' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/jsref_reduce.asp, Markdown, 200, OK' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_reduce2, Markdown, 200, OK' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjs, Pruebita, 200, OK' 
-+ '\n' + '        \n' + '        C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://developer.mozilla.org/es/docs/Web/JavaScript/Refere, Prueba, 404, fail' + '\n        ';
+const output2 = 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown, 200, OK' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://es.wikipedia.org/wiki/Markdown, Markdown, 200, OK' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/jsref_reduce.asp, Markdown, 200, OK' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_reduce2, Markdown, 200, OK' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://www.w3schools.com/jsref/tryit.asp?filename=tryjs, Pruebita, 200, OK' 
++ '\n' + 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest\\FILEMD.md, https://developer.mozilla.org/es/docs/Web/JavaScript/Refere, Prueba, 404, fail' + '\n';
 
 describe('crearTemplateDeArray', () => {
   it('Debería ser una función', () => {

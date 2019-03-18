@@ -57,9 +57,9 @@ describe('stats', () => {
     expect(typeof stats).toBe('function');
   });
   it('Debería devolver el número de links únicos y totales', () => {
-    expect(stats(input)).toBe('\n' + '        Total: 6' + '\n' + '        Unicos: 5' + '\n     ');
+    expect(stats(input)).toBe('\n' + 'Total: 6' + '\n' + 'Unicos: 5');
   });
   it('Debería devolver el número de links únicos, rotos y totales', () => {
-    expect(stats(input, 'validate')).toBe('\n' + '       Total: 6' + '\n' + '       Unicos: 5' + '\n' + '       Rotos: 1' + '\n        ');
+    expect(stats(input, 'validate')).toBe('\n' + 'Total: 6' + '\n' + 'Unicos: 5' + '\n' + 'Rotos: 1');
   });
 });

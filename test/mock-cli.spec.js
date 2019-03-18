@@ -4,7 +4,7 @@ const mockCliJs = (args) => {
   new Promise((resolve, reject) => {
     switch (args) {
     case (args.length === 1):
-     resolve(resp => console.log(crearTemplateDeArray(resp)));
+      resolve(resp => console.log(crearTemplateDeArray(resp)));
       break;
     case (args[1] === '--validate'):
       break;

@@ -29,7 +29,7 @@ describe('isDirectorySync', () => {
     expect(isDirectorySync(`${process.cwd()}`)).toBe(true);
   });
   it('Debería devolver false si la ruta no es un directorio', () => {
-    expect(isDirectorySync(`${process.cwd()}\\directoryForTest\\directoryExample\\FILEMD2.md`)).toBe(false);
+    expect(isDirectorySync(`${process.cwd()}\\directoryForTest\\directoryExample\\FILEMD2.md`.normalize())).toBe(false);
   });
 });
 

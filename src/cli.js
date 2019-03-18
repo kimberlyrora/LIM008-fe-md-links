@@ -17,4 +17,4 @@ export const cliJs = (args) => new Promise((resolve) => {
     mdLinks(args[0], { validate: false }).then(resp => resolve(crearTemplateDeArray(resp)));
   }
 });
-// cliJs(args).then(resp => console.log(resp));
+cliJs(args).then(resp => console.log(resp));

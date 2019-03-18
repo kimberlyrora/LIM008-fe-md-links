@@ -17,13 +17,13 @@ const mdLinks = (route, objeto) =>
     const absoluteRoute = readRoute(route);
     const arrayArchivosMd = readDirectorySync(absoluteRoute);
     let arrayLink = getLinks(arrayArchivosMd);
-    if (objeto === undefined) {
-      resolve(arrayLink);
-    } else if (objeto.validate) {
+    if (objeto.validate && objeto) {
       validLinks(arrayLink).then((objeto) => resolve(objeto));
     } else {
-      resolve(arrayLink);
-    };
+      if (objeto) {
+        resolve(arrayLink);
+      }
+    }
   });
 
 module.exports = mdLinks;

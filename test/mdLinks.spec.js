@@ -1,4 +1,4 @@
-import { mdLinks } from '../src/controller/mdLinks.js';
+const mdLinks = require('../src/controller/mdLinks.js');
 // TEST PARA MDLINKS
 
 const output1 = 
