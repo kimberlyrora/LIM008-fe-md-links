@@ -1,5 +1,5 @@
 import { cliJs } from '../src/cli.js';
-const route = 'C:\Users\User\Desktop\markdown\LIM008-fe-md-links';
+const route = 'C:\\Users\\Laboratoria\\Desktop\\Markdown\\LIM008-fe-md-links\\directoryForTest';
 describe('cliJs', () => {
   it('Debería ser una función', () => {
     expect(typeof cliJs).toBe('function');
