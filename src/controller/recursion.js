@@ -10,11 +10,11 @@ export const readDirectorySync = route => {
   let arrayReadDir = [];
   if (isFileSync(route) && extFile(route) === '.md') {
     arrayReadDir.push(route);
-  } else {
+  } else if (isDirectorySync(route)) {
     let hadReadDir = fs.readdirSync(route);
     hadReadDir.forEach((complement) => {
       let afterFile = path.join(route, complement);
-      arrayReadDir = arrayReadDir.concat(readDirectorySync(afterFile));
+      arrayReadDir = arrayReadDir.concat(readDirectorySync(afterFile));      
     });
   }
   return arrayReadDir;
