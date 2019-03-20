@@ -12,7 +12,8 @@ import { readRoute } from './view-controller.js';
  *          validate&&stats:  string con calculo de links totales, únicos y rotos
  */
 
-const mdLinks = (route, objeto) =>
+const mdLinks = (route, objeto) => {
+  console.log(objeto);
   new Promise((resolve) => {
     const absoluteRoute = readRoute(route);
     const arrayArchivosMd = readDirectorySync(absoluteRoute);
@@ -25,6 +26,6 @@ const mdLinks = (route, objeto) =>
       }
     }
   });
-
+};
 module.exports = mdLinks;
 
