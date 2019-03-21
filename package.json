@@ -36,11 +36,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kimberlyrora/LIM008-fe-md-links"
+    "url": "git+https://github.com/kimberlyrora/md-links"
   },
   "author": "",
   "bugs": {
-    "url": "https://github.com/kimberlyrora/LIM008-fe-md-links/issues"
+    "url": "https://github.com/kimberlyrora/md-links/issues"
   },
-  "homepage": "https://github.com/kimberlyrora/LIM008-fe-md-links#readme"
+  "homepage": "https://github.com/kimberlyrora/md-links#readme"
 }
